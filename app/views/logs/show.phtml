@@ -1,0 +1,45 @@
+<?php if (isset($arrayLogs)) { ?>
+    <!-- Im create a table to show all logs, a simple query to get all logs from the database -->
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/jquery-ui-timepicker-addon.css">
+    <script src="../public/js/jquery-ui-timepicker-addon.js"></script>  
+    <script src="../public/js/calendar.js"></script>
+    <script src="../public/js/services.js"></script>
+    <table class="table table-bordered">
+        <tr>
+            <td class="active">ID</td>
+            <td>SI SEDATE</td>
+            <td>SERVICE</td>
+            <td>INFO</td>    
+        </tr>
+        
+        
+
+        <?php
+        /*
+         * This function show all the previous layer from the MVC, used the controller logs
+         */
+         echo $this->getContent();
+
+        /* I'm set the varible from the controller logs */
+        $logs = $arrayLogs;
+
+        /* Print all the index from the array */
+        for ($i = 0; $i < count($logs); $i++) {
+
+            $dateLog = new DateTime($logs[$i]['Date']);
+            echo '<tr>';
+            echo '<td>' . $logs[$i]['Id'] . '</td>';
+            echo '<td>' . $dateLog->format('Y-m-d') . '</td>';
+            echo '<td>' . $logs[$i]['Service'] . '</td>';
+            echo '<td>' . $logs[$i]['Info'] . '</td>';
+            echo '</tr>';
+        }
+        ?>
+        
+    </table>
+    <?php
+} else {
+
+    header('Location: /programmatic/logs/');
+}

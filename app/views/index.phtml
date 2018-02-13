@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <title>Gameloft: programmatic's</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="./public/css/jquery-ui-timepicker-addon.css">
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+        <script src="./public/js/bootstrap.js"></script>
+        <script src="./public/js/services.js"></script>
+    </head>
+    <body id="logsBody">
+        <!-- Start principal site menu -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="http://localhost:8080/programmatic"><img width="60px" height="40px" src="http://localhost:8080/programmatic/img/logo.png" alt=""></a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="http://localhost:8080/programmatic"><span class="glyphicon glyphicon-home"></span>  Home<span class="sr-only">(current)</span></a></li>
+                        <li><a href="http://localhost:8080/programmatic/logs/"><span class="glyphicon glyphicon-list-alt"></span> Logs</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <!--End's principal site menu-->
+        <section class="main container-fluid">
+            <div class="row">
+                <section class="posts col-md-12">
+                    <article class="post clearfix">
+                        <form method="post" action="http://localhost:8080/programmatic/logs/show" class="form-inline">
+                            <div class="form-group">
+                                <label for="searchLog">ID Log:</label>
+                                <input id="searchLog" name="searchLog" autocomplete="off" type="text" class="form-control" placeholder="Search">
+                            </div>
+                            <div class="form-group">
+                                <label for="dateLogStart">Start date:</label>
+                                <input id="datepickerStart" name="dateLogStart" type="text"  class="form-control" size="12" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="dateLogFinal">Final date:</label>
+                                <input id="datepickerFinal" name="dateLogFinal" type="text"  class="form-control" size="12" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail2">Service:</label>
+                                <input autocomplete="off" id="service" type="text" class="form-control" onkeypress="return addServiceEnter(event)">
+                                <input id="addService" type="button" value="Add" class="btn btn-info" onclick="addServices();" disabled />
+
+                            </div>
+                            <div class="form-group">
+                                <button onclick="submitForm()" type="submit" class="btn btn-default">Search Logs</button>
+
+                            </div>
+                            <div id="services">
+                                <h3 class="post-title">Services:</h3>
+                            </div>
+                           
+
+                        </form>
+                        <br>
+                        <?php
+                        /*
+                         * With this code show all the layers  from index
+                         */
+                        echo $this->getContent();
+                        ?>
+                    </article>
+                </section>
+
+
+            </div>
+        </section>
+        <script src="./public/js/jquery-ui-timepicker-addon.js"></script>  
+        <script src="./public/js/calendar.js"></script>
+        <script src="./public/js/services.js"></script>
+
+
+    </body>
+</html>
